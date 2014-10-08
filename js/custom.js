@@ -157,30 +157,13 @@ $(document).ready(function () {
     });
 
 
-    //    no scroll on body when overlay is up
-    $(function () {
-
-        $('a.overlay-ajax').click(function(){
-            $( "body" ).addClass( "noscroll" );
-        });
-
-        $('a.overlay-close').click(function(){
-            $( "body" ).removeClass( "noscroll" );
-        });
-    });
-
-
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     /* smoothscroll */
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     smoothScroll.init({
-        speed: 1000
+        speed: 1000,
+        offset: 70
     });
-
-
-
-
-
 
 
 
@@ -224,6 +207,17 @@ $(document).ready(function () {
     $("#owl-testimonials").owlCarousel({
         singleItem:	true,
         autoPlay:	true
+    });
+
+
+    $("#owl-item").owlCarousel({
+        singleItem:	true,
+        autoPlay:	true,
+        navigation: true,
+        navigationText: [
+            "<i class='fa fa-angle-left fa-2x itemNav'></i>",
+            "<i class='fa fa-angle-right fa-2x itemNav'></i>"
+        ]
     });
 
 
@@ -299,6 +293,23 @@ $(document).ready(function () {
 
 
     }, { offset: 500 });
+
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    /* shortcodes */
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+    $('#myTab a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show');
+    });
+
+    $('#myTabPills a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+
+//
+//    $('.collapse').collapse();
 
 
 

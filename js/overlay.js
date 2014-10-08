@@ -30,19 +30,42 @@
                 }
                 classie.remove( overlay, 'close' );
             };
+
+
+
             if( support.transitions ) {
                 overlay.addEventListener( transEndEventName, onEndTransitionFn );
             }
             else {
                 onEndTransitionFn();
             }
+
+            $( "body" ).removeClass( "noscroll" );
+
         }
         else if( !classie.has( overlay, 'close' ) ) {
             classie.add( overlay, 'open' );
+            $( "body" ).addClass( "noscroll" );
         }
 
+
+
         $("div.overlay").animate({ scrollTop: 0 }, "slow");
+
+
     }
+
+
+    //esc key to close overlay
+    $(document).bind('keydown',function(e){
+        if ( e.which == 27 ) {
+            toggleOverlay();
+        };
+    });
+
+
+
+    closeBttn.addEventListener( 'click', toggleOverlay );
 
     triggerBttn.addEventListener( 'click', toggleOverlay );
     triggerBttnTwo.addEventListener( 'click', toggleOverlay );
@@ -53,6 +76,5 @@
     triggerBttnSeven.addEventListener( 'click', toggleOverlay );
 
 
-    closeBttn.addEventListener( 'click', toggleOverlay );
     return false;
 })();
